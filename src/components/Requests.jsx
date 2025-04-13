@@ -1,14 +1,30 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRequest } from '../utils/requestSlice';
+import { addRequest, removeRequest } from '../utils/requestSlice';
 
 const Requests = () => {
   
   const requests = useSelector((store) => store.requests);
 
   const dispatch = useDispatch();
+
+  const reviewRequest = async(status, requestId) => {
+    try{
+
+      const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + requestId, 
+        {
+          //empty => as this is a post call and i don't have to send any data
+        }, 
+        {withCredentials: true});
+
+        dispatch(removeRequest(requestId));
+
+    }catch (err){
+      console.error(err);
+    }
+  }
 
 
   const fetchRequests = async() => {
@@ -72,13 +88,13 @@ const Requests = () => {
                                      {/* Buttons */}
                     <div className="flex gap-3 mt-4">
                       <button
-                        onClick={() => handleAccept(_id)}
+                        onClick={() => reviewRequest("accepted",request._id)}
                          className="btn btn-secondary"
                       >
                         Accept
                       </button>
                       <button
-                        onClick={() => handleReject(_id)}
+                        onClick={() => reviewRequest("rejected",request._id)}
                          className="btn btn-primary"
                       >
                         Reject

@@ -32,11 +32,14 @@ const Connections = () => {
 
     if(!connections) return;
 
-    return (
-        <div className="text-center my-10">
-            <h1 className="text-4xl font-bold text-gray-500">No Connections Found</h1>
-        </div>
-    );
+    if(connections.length == 0)
+    {
+        return (
+            <div className="text-center my-10">
+                <h1 className="text-4xl font-bold text-gray-500">No Connections Found</h1>
+            </div>
+        );
+    }
 
     return (
         <div className="my-10">

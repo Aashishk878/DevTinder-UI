@@ -8,7 +8,11 @@ const requestSlice = createSlice({
             return action.payload;
         },
         removeRequest : (state, action) => {
-            return null;
+            //initially the state would be having the requests recieved
+            //now i want to remove that specific request which i reviewed
+
+            const newArray = state.filter(r => r._id !== action.payload);
+            return newArray;
         },
     },
 });
