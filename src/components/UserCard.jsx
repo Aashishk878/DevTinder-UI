@@ -21,7 +21,7 @@ const UserCard = ({user}) => {
           {age && gender && (
             <p className="text-sm text-gray-400">{age} years old, {gender}</p>
           )}
-          <p className="mt-2 text-sm text-gray-300 px-4">{about || "No description available."}
+          <p className="mt-2 text-sm text-gray-300 px-4 whitespace-pre-line break-words">{about || "No description available."}
           </p>
           <div className="card-actions justify-center mt-4">
           <button className="btn bg-gradient-to-r from-purple-600 to-blue-500 hover:brightness-110 text-white font-medium px-4 py-2 rounded-md">
