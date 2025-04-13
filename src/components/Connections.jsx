@@ -12,7 +12,6 @@ const Connections = () => {
 
     const fetchConnections = async()=> {
         try{
-
             const res = await axios.get(BASE_URL + "/user/connections", 
             {withCredentials: true}
             );
@@ -33,7 +32,11 @@ const Connections = () => {
 
     if(!connections) return;
 
-    if(connections.length == 0) return <h1>No Connections Found</h1>
+    return (
+        <div className="text-center my-10">
+            <h1 className="text-4xl font-bold text-gray-500">No Connections Found</h1>
+        </div>
+    );
 
     return (
         <div className="my-10">
