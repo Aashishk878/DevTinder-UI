@@ -452,7 +452,7 @@ app.use("/", userRouter);
 
 connectDB().then(() => {
   console.log("Database connection established....");
-  app.listen(process.env.PORT, () => {
+  app.listen(process.env.PORT || 10000, () => {
     console.log('server listening on port ****');
   });
 }).catch(err =>{
