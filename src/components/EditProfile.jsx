@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
 const EditProfile = ({user}) => {
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [age, setAge] = useState(user.age);
-  const [gender, setGender] = useState(user.gender);
-  const [about, setAbout] = useState(user.about);
-  const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
+  const [firstName, setFirstName] = useState(user.firstName || "");
+  const [lastName, setLastName] = useState(user.lastName || "");
+  const [age, setAge] = useState(user.age || "");
+  const [gender, setGender] = useState(user.gender || "");
+  const [about, setAbout] = useState(user.about || "");
+  const [photoUrl, setPhotoUrl] = useState(user.photoUrl || "");
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const[showToast, setShowToast] = useState(false);
@@ -44,7 +44,7 @@ const EditProfile = ({user}) => {
 
   return (
     <>
-    <div className='flex flex-col md:flex-row justify-center items-start gap-10 my-10'>
+    <div className='flex flex-col md:flex-row justify-center items-start gap-10 my-15'>
   <div className="flex justify-center mx-10">
     <div className="card bg-base-300 w-96 shadow-sm">
       <div className="card-body">
@@ -142,7 +142,7 @@ const EditProfile = ({user}) => {
         </div>
       </div>
     </div>
-    <div className='my-15 '>
+    <div className='my-15 mx-10 '>
      <UserCard user = {{firstName, lastName, photoUrl, age, gender, about}} />
      </div>
      </div>

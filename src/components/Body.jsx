@@ -44,15 +44,17 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <NavBar />
-
-      <Outlet />  {/*all the children routes of body will be rendered here*/}
-
+      
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      
       <Footer />
-
     </div>
-  )
+  );
+  
 }
 
 export default Body;
