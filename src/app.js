@@ -10,7 +10,7 @@ require("dotenv").config();
 // const {validateSignUpData} = require("./utils/validation");
 // const bcrypt = require("bcrypt");
 // const validator = require("validator");
-
+app.set("trust proxy", 1);
 const cookieParser = require("cookie-parser");
 
 // const jwt = require("jsonwebtoken");
