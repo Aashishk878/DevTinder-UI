@@ -4,6 +4,7 @@ const ConnectionRequestModel = require('../models/connectionRequest');
 const { subDays, startOfDay, endOfDay } = require('date-fns'); //subDays => subtract day
 const sendConnectionEmail = require('./mailer');
 
+//this job will run at 8 am every morning
 cron.schedule('00 08 * * *', async () => {
   // Send emails to all people who got requests the previous day
 
