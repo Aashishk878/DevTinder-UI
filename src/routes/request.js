@@ -5,6 +5,8 @@ const {userAuth} = require("../middlewares/auth");
 const ConnectionRequestModel = require("../models/connectionRequest");
 const User = require("../models/user");
 
+const sendConnectionEmail = require("../utils/mailer");
+ 
 //& ONLY FOR INTERESTED AND IGNORED STATUS
 requestRouter.post("/request/send/:status/:toUserId", 
   userAuth, 
@@ -54,6 +56,9 @@ requestRouter.post("/request/send/:status/:toUserId",
 
       //save this instance to db
       const data = await connectionRequest.save();
+
+      await sendConnectionEmail(req.user.firstName, toUser.emailId, status);
+      // console.log(emailRes + "email sent");
 
       res.json({
         message: req.user.firstName+" is "+status+" in "+toUser.firstName,
