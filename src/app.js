@@ -6,6 +6,8 @@ const cors = require("cors")
 
 require("dotenv").config();
 
+require("./utils/cronjob")
+
 // const User = require("./models/user");
 // const {validateSignUpData} = require("./utils/validation");
 // const bcrypt = require("bcrypt");
