@@ -52,6 +52,13 @@ const userSchema = new mongoose.Schema({
             }
         } //! BY DEFAULT, validator only works when we are creating a new user and not while updating a user => we'll have to enable it => RUN VALIDATORS IN FINDBYIDANDUPDATE
     },
+    isPremium: {
+        type: Boolean,
+        default: false,
+    },
+    membershipType: {
+        type: String,
+    },
     photoUrl: {
         type: String,
         default:"https://www.dgvaishnavcollege.edu.in/dummy-profile-pic/",
