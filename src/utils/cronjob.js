@@ -12,8 +12,8 @@ cron.schedule('00 08 * * *', async () => {
     const yesterday = subDays(new Date(), 1);
     // const today = new Date();
 
-    const yesterdayStart = startOfDay(today);
-    const yesterdayEnd = endOfDay(today);
+    const yesterdayStart = startOfDay(yesterday);
+    const yesterdayEnd = endOfDay(yesterday);
     // console.log(yesterdayEnd);
 
     const pendingRequests = await ConnectionRequestModel.find({
