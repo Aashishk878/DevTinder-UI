@@ -4,6 +4,8 @@ const connectDB = require("./config/database");
 const app = express();
 const cors = require("cors")
 
+const http = require("http");
+
 require("dotenv").config();
 
 require("./utils/cronjob")
@@ -446,19 +448,30 @@ const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user")
-const paymentRouter = require("./routes/payment")
+const paymentRouter = require("./routes/payment");
+const initialiseSocket = require("./utils/socket");
+const chatRouter = require("./routes/chat");
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
 app.use("/", paymentRouter);
+app.use("/", chatRouter);
+
+const server = http.createServer(app);
+
+initialiseSocket(server);
+
 
 connectDB().then(() => {
   console.log("Database connection established....");
-  app.listen(process.env.PORT || 10000, () => {
+  server.listen(process.env.PORT || 10000, () => {
     console.log('server listening on port ****');
   });
+  // app.listen(process.env.PORT || 10000, () => {
+  //   console.log('server listening on port ****');
+  // });
 }).catch(err =>{
   console.error("Database can't be connected!!");
 });
