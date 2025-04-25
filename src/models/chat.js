@@ -1,5 +1,5 @@
-const { default: mongoose } = require("mongoose");
-const monoose = require ("mongoose");
+// const { default: mongoose } = require("mongoose");
+const mongoose = require ("mongoose");
 
 const messageSchema = new mongoose.Schema({
     senderId: {
